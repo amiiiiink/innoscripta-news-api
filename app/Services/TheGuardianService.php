@@ -1,43 +1,31 @@
 <?php
+
 namespace App\Services;
 
 use App\DTO\ArticleDTO;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
+use App\Services\Contracts\NewsServiceInterface;
 
-class TheGuardianService
+class TheGuardianService extends BaseNewsService implements NewsServiceInterface
 {
-    protected string $apiKey;
+    protected string $baseUrl = 'https://content.guardianapis.com';
 
-    public function __construct()
+    protected function setHeaders(): void
     {
-        $this->apiKey = config('services.guardian.api_key');
+        $this->headers = ['api-key' => $this->apiKey];
     }
 
     public function aggregate(string $keyword): ?array
     {
-        try {
-            $response = Http::withHeaders([
-                'api-key' => $this->apiKey
-            ])->get('https://content.guardianapis.com/search', [
-                'q' => $keyword
-            ]);
-
-            $articles = $response->json();
-
-            return $this->mapArticles($articles);
-        } catch (\Throwable $e) {
-            Log::error($e->getMessage());
-            return null;
-        }
+        return $this->fetchArticles('/search', ['q' => $keyword]);
     }
 
-    private function mapArticles(array $articles): array
+    protected function validateResponse(array $data): bool
     {
-        if (!isset($articles['response']['status']) || $articles['response']['status'] !== 'ok') {
-            return [];
-        }
+        return isset($data['response']['status']) && $data['response']['status'] === 'ok';
+    }
 
-        return array_map(fn($article) => ArticleDTO::fromGuardianApi($article), $articles['response']['results']);
+    protected function mapArticles(array $articles): array
+    {
+        return array_map(fn($article) => ArticleDTO::fromGuardianApi($article), $articles['response']['results'] ?? []);
     }
 }

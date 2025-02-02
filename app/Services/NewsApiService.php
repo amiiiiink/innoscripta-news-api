@@ -3,42 +3,29 @@
 namespace App\Services;
 
 use App\DTO\ArticleDTO;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
+use App\Services\Contracts\NewsServiceInterface;
 
-class NewsApiService
+class NewsApiService extends BaseNewsService implements NewsServiceInterface
 {
-    protected string $apiKey;
+    protected string $baseUrl = 'https://newsapi.org/v2';
 
-    public function __construct()
+    protected function setHeaders(): void
     {
-        $this->apiKey = config('services.news_api.api_key');
+        $this->headers = ['X-Api-Key' => $this->apiKey];
     }
 
     public function aggregate(string $keyword): ?array
     {
-        try {
-            $response = Http::withHeaders([
-                'X-Api-Key' => $this->apiKey
-            ])->get('https://newsapi.org/v2/everything', [
-                'q' => $keyword
-            ]);
-
-            $articles = $response->json();
-
-            return $this->mapArticles($articles);
-        } catch (\Exception $exception) {
-            Log::error($exception->getMessage());
-            return null;
-        }
+        return $this->fetchArticles('/everything', ['q' => $keyword]);
     }
 
-    private function mapArticles(array $articles): array
+    protected function validateResponse(array $data): bool
     {
-        if ($articles['status'] !== 'ok') {
-            return [];
-        }
+        return isset($data['status']) && $data['status'] === 'ok';
+    }
 
-        return array_map(fn($article) => ArticleDTO::fromNewsApi($article), $articles['articles']);
+    protected function mapArticles(array $articles): array
+    {
+        return array_map(fn($article) => ArticleDTO::fromNewsApi($article), $articles['articles'] ?? []);
     }
 }
