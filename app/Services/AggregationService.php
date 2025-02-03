@@ -21,13 +21,15 @@ class AggregationService
      */
     public function aggregate(): void
     {
-        $keyword = "soldier";
+        $keyword = "test";
         $newsApiArticles = $this->newsApiService->aggregate($keyword);
         $guardianArticles = $this->theGuardianService->aggregate($keyword);
         $articles = array_merge($newsApiArticles, $guardianArticles);
         if (!empty($articles)) {
             $articlesArray = array_map(fn($article) => $article->toArray(), $articles);
             Article::query()->insert($articlesArray);
+        }else{
+            dd('sss');
         }
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Exceptions\NewsServiceException;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -28,7 +29,8 @@ abstract class BaseNewsService
             return $this->validateResponse($data) ? $this->mapArticles($data) : [];
         } catch (\Throwable $e) {
             Log::error($e->getMessage());
-            return null;
+            throw new NewsServiceException();
+//            return [];
         }
     }
 
