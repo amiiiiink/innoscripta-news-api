@@ -42,4 +42,8 @@ return [
         'api_key' => env('NEWS_API_API_KEY'),
     ],
 
+    'new_york_api' => [
+        'api_key' => env('NEW_YORK_API_KEY'),
+    ],
+
 ];

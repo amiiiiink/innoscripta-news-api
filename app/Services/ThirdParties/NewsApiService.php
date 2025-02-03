@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\ThirdParties;
 
 use App\DTO\ArticleDTO;
+use App\Services\Abstract\BaseNewsService;
 use App\Services\Contracts\NewsServiceInterface;
 
-class NewsApiService extends BaseNewsService implements NewsServiceInterface
+class NewsApiService extends BaseNewsService
 {
     protected string $baseUrl = 'https://newsapi.org/v2';
 

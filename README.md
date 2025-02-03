@@ -9,12 +9,13 @@
 
 ## About Laravel Innoscripta Home Challnege
 
-I has some features, such as:
+I have some features, such as:
 
-- aaaaa
-
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Add New York Times 
+- Add job
+- decide to add API Resource or NOT ?
+- add read me road map
+- update Bio GitHub
 
 ### Learning Laravel
 

@@ -2,8 +2,10 @@
 
 namespace App\Services;
 
-use App\Models\Article;
 use App\Repositories\Article\ArticleRepositoryInterface;
+use App\Services\ThirdParties\NewsApiService;
+use App\Services\ThirdParties\NewYorkTimesService;
+use App\Services\ThirdParties\TheGuardianService;
 use Illuminate\Http\Client\ConnectionException;
 
 class AggregationService
@@ -12,6 +14,7 @@ class AggregationService
     public function __construct(
         public NewsApiService     $newsApiService,
         public TheGuardianService $theGuardianService,
+        public NewYorkTimesService $newYorkTimesService,
         public ArticleRepositoryInterface $articleRepository,
     )
     {
@@ -25,13 +28,16 @@ class AggregationService
     public function aggregate(): void
     {
         $keyword = "test";
+
         $newsApiArticles = $this->newsApiService->aggregate($keyword);
         $guardianArticles = $this->theGuardianService->aggregate($keyword);
-        $articles = array_merge($newsApiArticles, $guardianArticles);
+        $newYorkTimes = $this->newYorkTimesService->aggregate($keyword);
+
+        $articles = array_merge($newsApiArticles, $guardianArticles,$newYorkTimes);
+
         if (!empty($articles)) {
             $articlesArray = array_map(fn($article) => $article->toArray(), $articles);
             $this->articleRepository->create($articlesArray);
-//            Article::query()->insert($articlesArray);
         }
     }
 }

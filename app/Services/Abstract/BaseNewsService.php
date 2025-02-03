@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Abstract;
 
 use App\Exceptions\NewsServiceException;
+use App\Services\Contracts\NewsServiceInterface;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
-abstract class BaseNewsService
+abstract class BaseNewsService implements NewsServiceInterface
 {
     protected string $apiKey;
     protected string $baseUrl;

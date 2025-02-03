@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\ThirdParties;
 
 use App\DTO\ArticleDTO;
+use App\Services\Abstract\BaseNewsService;
 use App\Services\Contracts\NewsServiceInterface;
 
-class TheGuardianService extends BaseNewsService implements NewsServiceInterface
+class TheGuardianService extends BaseNewsService
 {
     protected string $baseUrl = 'https://content.guardianapis.com';
 

@@ -69,6 +69,21 @@ class ArticleDTO
         );
     }
 
+    public static function fromNewYorkTimesApi(array $article): self
+    {
+        return new self(
+            title: $article['headline']['print_headline'],
+            content: $article['lead_paragraph'],
+            description: $article['abstract'],
+            url: $article['webUrl'],
+            url_to_image: null,
+            published_at: Carbon::parse($article['pub_date'])->format('Y-m-d H:i:s'),
+            source: $article['source'],
+            author: $article['byline']['original'] ?? null,
+            category: $article['section_name'] ?? null
+        );
+    }
+
     public function toArray(): array
     {
         return [
