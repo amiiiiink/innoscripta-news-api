@@ -28,7 +28,7 @@ class AggregateArticlesJob implements ShouldQueue
 
     /**
      * Execute the job.
-     * @throws ConnectionException
+     * @param AggregationService $aggregationService
      */
     public function handle(AggregationService $aggregationService): void
     {

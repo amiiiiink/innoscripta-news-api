@@ -31,7 +31,6 @@ abstract class BaseNewsService implements NewsServiceInterface
         } catch (\Throwable $e) {
             Log::error($e->getMessage());
             throw new NewsServiceException();
-//            return [];
         }
     }
 

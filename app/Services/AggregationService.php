@@ -17,8 +17,8 @@ class AggregationService
     }
 
     /**
+     * @param string $keyword
      * @return void
-     * @throws ConnectionException
      */
     public function aggregate(string $keyword): void
     {

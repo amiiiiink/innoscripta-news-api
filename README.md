@@ -16,7 +16,6 @@
 I have some features, such as:
 
 
-- Add job
 - decide to add API Resource or NOT ?
 - update read me road map
 - Create API endpoints that allow the frontend application to interact with the backend and retrieve articles
