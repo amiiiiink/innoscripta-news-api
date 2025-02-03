@@ -16,11 +16,12 @@
 I have some features, such as:
 
 
-- update read me road map
-- Create API endpoints that allow the frontend application to interact with the backend and retrieve articles
-  based on search queries, filtering criteria, and user preferences
+
+- retrieve articles based on search queries, filtering criteria (date, category, source), and
+  user preferences (selected sources, categories, authors)
 - Dockerize Project
-- - update Bio GitHub
+- update read me road map
+- update Bio GitHub
 
 # Innoscripta API
 
