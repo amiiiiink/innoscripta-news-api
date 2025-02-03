@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Article;
+use App\Repositories\Article\ArticleRepositoryInterface;
 use Illuminate\Http\Client\ConnectionException;
 
 class AggregationService
@@ -10,7 +11,9 @@ class AggregationService
 
     public function __construct(
         public NewsApiService     $newsApiService,
-        public TheGuardianService $theGuardianService)
+        public TheGuardianService $theGuardianService,
+        public ArticleRepositoryInterface $articleRepository,
+    )
     {
 
     }
@@ -27,9 +30,8 @@ class AggregationService
         $articles = array_merge($newsApiArticles, $guardianArticles);
         if (!empty($articles)) {
             $articlesArray = array_map(fn($article) => $article->toArray(), $articles);
-            Article::query()->insert($articlesArray);
+            $this->articleRepository->create($articlesArray);
+//            Article::query()->insert($articlesArray);
         }
-
-
     }
 }
