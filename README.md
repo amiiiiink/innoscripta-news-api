@@ -16,10 +16,10 @@
 I have some features, such as:
 
 
-- decide to add API Resource or NOT ?
 - update read me road map
 - Create API endpoints that allow the frontend application to interact with the backend and retrieve articles
   based on search queries, filtering criteria, and user preferences
+- Dockerize Project
 - - update Bio GitHub
 
 # Innoscripta API
