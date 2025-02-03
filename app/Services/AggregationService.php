@@ -28,8 +28,6 @@ class AggregationService
         if (!empty($articles)) {
             $articlesArray = array_map(fn($article) => $article->toArray(), $articles);
             Article::query()->insert($articlesArray);
-        }else{
-            dd('sss');
         }
 
 
