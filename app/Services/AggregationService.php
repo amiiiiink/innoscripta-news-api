@@ -12,9 +12,10 @@ class AggregationService
 {
 
     public function __construct(
-        public NewsApiService     $newsApiService,
-        public TheGuardianService $theGuardianService,
-        public NewYorkTimesService $newYorkTimesService,
+//        public NewsApiService     $newsApiService,
+//        public TheGuardianService $theGuardianService,
+//        public NewYorkTimesService $newYorkTimesService,
+        public array $newsServices,
         public ArticleRepositoryInterface $articleRepository,
     )
     {
@@ -28,12 +29,17 @@ class AggregationService
     public function aggregate(): void
     {
         $keyword = "test";
+        $articles = [];
 
-        $newsApiArticles = $this->newsApiService->aggregate($keyword);
-        $guardianArticles = $this->theGuardianService->aggregate($keyword);
-        $newYorkTimes = $this->newYorkTimesService->aggregate($keyword);
+        foreach ($this->newsServices as $service) {
+            $articles = array_merge($articles, $service->aggregate($keyword));
+        }
 
-        $articles = array_merge($newsApiArticles, $guardianArticles,$newYorkTimes);
+//        $newsApiArticles = $this->newsApiService->aggregate($keyword);
+//        $guardianArticles = $this->theGuardianService->aggregate($keyword);
+//        $newYorkTimes = $this->newYorkTimesService->aggregate($keyword);
+
+//        $articles = array_merge($newsApiArticles, $guardianArticles,$newYorkTimes);
 
         if (!empty($articles)) {
             $articlesArray = array_map(fn($article) => $article->toArray(), $articles);

@@ -25,6 +25,14 @@ class NewsServiceProvider extends ServiceProvider
         $this->app->singleton(NewYorkTimesService::class, function () {
             return new NewYorkTimesService('services.new_york_api.api_key');
         });
+
+        $this->app->singleton('newsServices', function ($app) {
+            return [
+                $app->make(TheGuardianService::class),
+                $app->make(NewsApiService::class),
+                $app->make(NewYorkTimesService::class),
+            ];
+        });
     }
 
     /**
