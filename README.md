@@ -17,8 +17,10 @@ I have some features, such as:
 
 
 
-- retrieve articles based on search queries, filtering criteria (date, category, source), and
-  user preferences (selected sources, categories, authors)
+- retrieve articles based on search queries, 
+- filtering criteria (date, category, source)
+- sanctum auth system
+- user preferences system
 - Dockerize Project
 - update read me road map
 - update Bio GitHub
