@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Jobs\AggregateArticlesJob;
 use App\Repositories\Article\ArticleRepositoryInterface;
 use App\Services\AggregationService;
 use Illuminate\Support\ServiceProvider;
@@ -26,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $keyword = "test";
+        AggregateArticlesJob::dispatch($keyword);
     }
 }
