@@ -64,7 +64,7 @@ next times to run project :
 
 
 
-## Installation ( With out Docker )
+## Installation ( WithOut Docker )
 
 
 
