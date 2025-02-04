@@ -45,6 +45,23 @@ To see front end document goto /request-docs
 
 ## Installation ( With Docker )
 
+run 
+ ```bash
+   docker-compose up --build -d 
+   ```
+ for the first run 
+
+to down docker 
+```bash
+   docker-compose down
+   ```
+
+next times to run project : 
+
+ ```bash
+   docker-compose up -d 
+   ```
+
 
 
 ## Installation ( With out Docker )
