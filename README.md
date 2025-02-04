@@ -16,13 +16,10 @@
 I have some features, such as:
 
 
-- retrieve articles based on search queries, 
-- filtering criteria (date, category, source)
-- sanctum auth system
 - user preferences system
 - Project Dockerized 
 - update read me road map
-- update Bio GitHub
+
 
 # Innoscripta API
 
@@ -63,8 +60,13 @@ Data sources used were The Guardian, New York Times, and NewsAPI.org
 ```bash
  php artisan queue:work
    ```
-  
-
+4. run 
+```bash
+ php artisan tinker
+   ```
+```bash
+App\Models\User::factory()->create();
+   ```
 ## Usage
 
 The application uses these endpoints 
