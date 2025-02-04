@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $keyword = "test";
-        AggregateArticlesJob::dispatch($keyword);
+//        $keyword = "test";
+//        AggregateArticlesJob::dispatch($keyword);
     }
 }

@@ -15,7 +15,7 @@
 
 I have some features, such as:
 
-- Project Dockerized 
+
 - update read me road map
 
 
