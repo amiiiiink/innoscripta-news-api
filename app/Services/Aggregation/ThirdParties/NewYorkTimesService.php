@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Services\ThirdParties;
+namespace App\Services\Aggregation\ThirdParties;
 
 use App\DTO\ArticleDTO;
-use App\Services\Abstract\BaseNewsService;
+use App\Services\Aggregation\Abstract\BaseNewsService;
 
 class NewYorkTimesService extends BaseNewsService
 {

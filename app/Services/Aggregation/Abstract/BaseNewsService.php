@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Services\Abstract;
+namespace App\Services\Aggregation\Abstract;
 
 use App\Exceptions\NewsServiceException;
-use App\Services\Contracts\NewsServiceInterface;
+use App\Services\Aggregation\Contracts\NewsServiceInterface;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 

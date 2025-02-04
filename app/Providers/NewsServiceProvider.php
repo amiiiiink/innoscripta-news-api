@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use App\Services\ThirdParties\NewsApiService;
-use App\Services\ThirdParties\NewYorkTimesService;
-use App\Services\ThirdParties\TheGuardianService;
+use App\Services\Aggregation\ThirdParties\NewsApiService;
+use App\Services\Aggregation\ThirdParties\NewYorkTimesService;
+use App\Services\Aggregation\ThirdParties\TheGuardianService;
 use Illuminate\Support\ServiceProvider;
 
 class NewsServiceProvider extends ServiceProvider

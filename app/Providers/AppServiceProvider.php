@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use App\Jobs\AggregateArticlesJob;
 use App\Repositories\Article\ArticleRepositoryInterface;
-use App\Services\AggregationService;
+use App\Services\Aggregation\AggregationService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Aggregation;
 
 use App\Repositories\Article\ArticleRepositoryInterface;
-use Illuminate\Http\Client\ConnectionException;
 
 class AggregationService
 {
