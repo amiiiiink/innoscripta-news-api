@@ -15,24 +15,27 @@
 
 I have some features, such as:
 
-
-- user preferences system
 - Project Dockerized 
 - update read me road map
 
 
-# Innoscripta API
+# Innoscripta API (case study)
 
-Innoscripta App is a news aggregator website that pulls articles from various sources and displays them in a clean,
-easy-to-read format
+Innoscripta App  is to build the backend functionality for
+a news aggregator website that pulls articles from various sources and serves them to the
+frontend application.
+Data sources used were The Guardian, New York Times, and NewsAPI.org
 
 ## About Project
 
 - Article search and filtering
     - Search for articles by keyword
     - Filter search results by date, category, and source
+    -  user preferences system is automatically going based on each user search we can recommend his/her articles
+  
 
-Data sources used were The Guardian, New York Times, and NewsAPI.org
+To see front end document goto /request-docs
+
 
 ## Prerequisites
 
@@ -40,7 +43,14 @@ Data sources used were The Guardian, New York Times, and NewsAPI.org
 - Php8.4
 - Mysql
 
-## Installation
+## Installation ( With Docker )
+
+
+
+## Installation ( With out Docker )
+
+
+
 
 1. **Migrate and Seed the Database**  
    Run the following command to set up the database structure and seed it with initial data:
@@ -66,7 +76,8 @@ Data sources used were The Guardian, New York Times, and NewsAPI.org
    ```
 ```bash
 App\Models\User::factory()->create();
-   ```
+Article::factory()->count(100)->create();
+```
 ## Usage
 
 The application uses these endpoints 
@@ -81,7 +92,7 @@ and the concrete code into Services/Third parties
 
 ## Contact
 
-You can contact me at [karimi66.amin@gmail.com](karimi66.amin@gmail.com 'Joel Okoromi')
+You can contact me at [karimi66.amin@gmail.com](karimi66.amin@gmail.com 'Amin Karimi')
 
 
 
