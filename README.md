@@ -1,116 +1,122 @@
-<p align="center">
-<a href="https://laravel.com" target="_blank">
-<img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo">
-</a>
-</p>
+# Innoscripta News API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Overview
 
-## About Laravel Innoscripta Home Challenge
+The **Innoscripta News API** is a backend service designed for a news aggregator application. It pulls articles from
+multiple sources, such as The Guardian, The New York Times, and NewsAPI.org, and provides an API for frontend
+consumption.
 
-I have some features, such as:
+## Features
 
-
-- update read me road map
-
-
-# Innoscripta API (case study)
-
-Innoscripta App  is to build the backend functionality for
-a news aggregator website that pulls articles from various sources and serves them to the
-frontend application.
-Data sources used were The Guardian, New York Times, and NewsAPI.org
-
-## About Project
-
-- Article search and filtering
-    - Search for articles by keyword
-    - Filter search results by date, category, and source
-    -  user preferences system is automatically going based on each user search we can recommend his/her articles
-  
-
-To see front end document goto /request-docs
-
+- **Article Search & Filtering**
+    - Search articles by keyword
+    - Filter results by date, category, and source
+- **User Preferences System**
+    - Recommends articles based on user search history
+- **API Documentation**
+    - Available at `/request-docs`
 
 ## Prerequisites
 
-- Laravel11
-- Php8.4
-- Mysql
+- Laravel 11
+- PHP 8.4
+- MySQL
 
-## Installation ( With Docker )
+## Installation
 
-run 
- ```bash
-   docker-compose up --build -d 
-   ```
- for the first run 
-
-to down docker 
 ```bash
-   docker-compose down
-   ```
+# Clone the repository
+git clone https://github.com/amiiiiink/innoscripta-news-api.git
+cd innoscripta-news-api
+```
 
-next times to run project : 
+### Using Docker
 
- ```bash
-   docker-compose up -d 
-   ```
+```bash
+# Build and start containers
+docker-compose up --build -d
+```
 
+```bash
+# For subsequent runs
+make up   
+```
 
+```bash
+# OR
+docker-compose up -d
+```
 
-## Installation ( WithOut Docker )
+```bash
+# To stop the project
+make down  
+```
 
+```bash
+# OR
+docker-compose down
+```
 
+### After Project serve on localhost:8000
 
-
-1. **Migrate and Seed the Database**  
-   Run the following command to set up the database structure and seed it with initial data:
+1. **Migrate and Seed the Database**
    ```bash
-   php artisan migrate 
+   php artisan migrate
    ```
-2. **Update `.env` File**  
-   After running the above commands, copy the generated `Client ID` and `Client Secret` from the output and update
-   your `.env` file with the following variables:
-   ```env
-    GUARDIAN_API_KEY= 
-    NEWS_API_API_KEY= 
-    NEW_YORK_API_KEY=
+
+2. **Start Queue Worker**
+   ```bash
+   php artisan queue:work
+   ```
+3. **Seed Additional Data**
+   ```bash
+   php artisan tinker
+   App\Models\User::factory()->create();
+   ```
+
+4**Seed Additional Data (Optional in case you want to have 100 articles to test without fetching from APIs)**
+   ```bash
+   php artisan tinker
+    App\Models\Article::factory()->count(100)->create();;
+   ```
+  
+
+ **Update Environment Variables**
+   Edit your `.env` file and add API keys:
+   ```ini
+   GUARDIAN_API_KEY=
+   NEWS_API_API_KEY=
+   NEW_YORK_API_KEY=
    ```
    
-3. Then run :
-```bash
- php artisan queue:work
+   and
+
+  ```ini
+     DB_CONNECTION=mysql
+     DB_HOST=mysql
+     DB_PORT=3306
+     DB_DATABASE=innoscripta
+     DB_USERNAME=root
+     DB_PASSWORD=password
    ```
-4. run 
-```bash
- php artisan tinker
-   ```
-```bash
-App\Models\User::factory()->create();
-Article::factory()->count(100)->create();
-```
+
 ## Usage
 
-The application uses these endpoints 
+API documentation is available at:
 
-`/article/aggregation`
+```
+http://localhost:8000/request-docs
+```
 
-## Development
+## Development Guide
 
-To add new Service just add it NewsServiceProvider
-and the concrete code into Services/Third parties 
+To add a new service:
 
+- Register it in `NewsServiceProvider`
+- Implement the logic in `Services/ThirdParties`
 
 ## Contact
 
-You can contact me at [karimi66.amin@gmail.com](karimi66.amin@gmail.com 'Amin Karimi')
-
-
-
+For inquiries, feel free to reach out:
+📧 [karimi66.amin@gmail.com](mailto:karimi66.amin@gmail.com)
 
