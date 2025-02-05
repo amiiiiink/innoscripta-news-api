@@ -12,4 +12,17 @@ class UserSearchRepository extends BaseRepository implements UserSearchRepositor
     {
         parent::__construct($model);
     }
+
+
+    public function getUserSearches(): mixed
+    {
+        $this->model->query()
+            ->where('user_id', auth()->user()->id)
+            ->whereNotNull('category')
+            ->selectRaw('category, COUNT(*) as count')
+            ->groupBy('category')
+            ->orderByDesc('count')
+            ->pluck('category')
+            ->toArray();
+    }
 }
