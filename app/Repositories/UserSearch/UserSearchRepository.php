@@ -16,7 +16,7 @@ class UserSearchRepository extends BaseRepository implements UserSearchRepositor
 
     public function getUserSearches(): mixed
     {
-        $this->model->query()
+        return $this->model->query()
             ->where('user_id', auth()->user()->id)
             ->whereNotNull('category')
             ->selectRaw('category, COUNT(*) as count')
