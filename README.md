@@ -9,18 +9,18 @@ consumption.
 ## Features
 
 - **Article Search & Filtering**
-    - Search articles by keyword
+    - Search articles by keyword from Third party APIs
     - Filter results by date, category, and source
 - **User Preferences System**
     - Recommends articles based on user search history
 - **API Documentation**
     - Available at `/request-docs`
 
-## Prerequisites
+## Technologies
 
-- Laravel 11
+- Laravel11
 - PHP 8.4
-- MySQL
+- MySQL8
 
 ## Installation
 
