@@ -8,8 +8,6 @@ Route::post('/auth/token', [AuthController::class, 'generateToken'])->name('logi
 
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    // Protected Post API routes
     Route::post('articles', [ArticleController::class, 'index']);
-
 });
 
