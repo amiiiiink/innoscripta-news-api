@@ -8,7 +8,6 @@ restart:
 	docker compose -f docker-compose.yml restart
 
 bash:
-	docker compose -f docker-compose.yml exec app bash
+	docker compose -f docker-compose.yml exec laravel_app_innoscripta bash
 
-pint:
-	docker compose -f docker-compose.yml exec app ./vendor/bin/pint
+
