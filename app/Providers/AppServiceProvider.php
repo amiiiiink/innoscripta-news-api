@@ -27,6 +27,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        AggregateArticlesJob::dispatch(['technology', 'sports', 'health', 'business', 'entertainment', 'science', 'politics', 'finance'][array_rand(['technology', 'sports', 'health', 'business', 'entertainment', 'science', 'politics', 'finance'])]);
+//        AggregateArticlesJob::dispatch(['technology', 'sports', 'health', 'business', 'entertainment', 'science', 'politics', 'finance'][array_rand(['technology', 'sports', 'health', 'business', 'entertainment', 'science', 'politics', 'finance'])]);
     }
 }
