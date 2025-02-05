@@ -3,8 +3,14 @@
 ## Overview
 
 The **Innoscripta News API** is a backend service designed for a news aggregator application. It pulls articles from
-multiple sources, such as The Guardian, The New York Times, and NewsAPI.org, and provides an API for frontend
-consumption.
+multiple sources, such as:
+
+- The Guardian
+- The New York Times
+- NewsAPI.org
+
+and provides an API for frontend consumption.
+
 
 ## Features
 
