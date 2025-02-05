@@ -22,9 +22,7 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
             ->when($source, fn($query) => $query->where('source', $source))
             ->when($fromDate, fn($query) => $query->where('published_at', '>=', $fromDate))
             ->when($toDate, fn($query) => $query->where('published_at', '<', $toDate));
-
         $query = $this->applyUserPreferences($query);
-//        dd($query->toSql());
         return $query->paginate();
     }
 
@@ -32,7 +30,7 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
     {
 
         // Example user preferences (replace with actual logic)
-        $preferredCategories = UserSearch::query()->where('user_id', $user->id)
+        $preferredCategories = UserSearch::query()->where('user_id', auth()->user()->id)
             ->whereNotNull('category')
             ->selectRaw('category, COUNT(*) as count')
             ->groupBy('category')
