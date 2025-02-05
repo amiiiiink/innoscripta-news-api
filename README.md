@@ -75,6 +75,11 @@ docker-compose down
    php artisan tinker
    App\Models\User::factory()->create();
    ```
+   
+The test user in api/auth/token is : 
+
+ username: amin@gmail.com
+ password: password
 
 4**Seed Additional Data (Optional in case you want to have 100 articles to test without fetching from APIs)**
    ```bash

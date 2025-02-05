@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $keyword = "test";
-        AggregateArticlesJob::dispatch($keyword);
+        $keyword = ['technology', 'sports', 'health', 'business', 'entertainment', 'science', 'politics', 'finance'][array_rand(['technology', 'sports', 'health', 'business', 'entertainment', 'science', 'politics', 'finance'])];
+//        AggregateArticlesJob::dispatch($keyword);
     }
 }
