@@ -22,6 +22,9 @@ abstract class BaseNewsService implements NewsServiceInterface
 
     abstract protected function setHeaders(): void;
 
+    /**
+     * @throws NewsServiceException
+     */
     protected function fetchArticles(string $endpoint, array $params): ?array
     {
         try {

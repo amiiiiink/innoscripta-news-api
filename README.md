@@ -19,7 +19,7 @@ consumption.
 ## Technologies
 
 - Laravel11
-- PHP 8.4
+- PHP8.4
 - MySQL8
 
 ## Installation
@@ -58,6 +58,8 @@ docker-compose down
 ```
 
 ### After Project serve on localhost:8000
+
+ Run below commands on Docker bash.
 
 1. **Migrate and Seed the Database**
    ```bash
