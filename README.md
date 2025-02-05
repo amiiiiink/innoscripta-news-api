@@ -90,7 +90,7 @@ The test user in api/auth/token is :
 4**Seed Additional Data (Optional in case you want to have 100 articles to test without fetching from APIs)**
    ```bash
    php artisan tinker
-    App\Models\Article::factory()->count(100)->create();;
+    App\Models\Article::factory()->count(100)->create();
    ```
   
 
