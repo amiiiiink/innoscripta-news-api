@@ -66,10 +66,12 @@ docker-compose down
 ### WithOut Docker
 
 ```bash
+# install dependencies
 composer install
 ```
 
-```bash
+```bash 
+# to serve project
 php artisan serve
 ```
 
@@ -130,6 +132,16 @@ php artisan serve
    ```bash
    php artisan queue:work
    ```
+
+6. Seed Additional Data (Optional in case you want to have 100 articles to test without fetching from APIs)
+   ```bash
+   php artisan tinker
+   ```
+   Then inside tinker terminal :
+   ```bash
+   App\Models\Article::factory()->count(100)->create();
+   ```
+   
 ## Usage
 
 API documentation is available at:
