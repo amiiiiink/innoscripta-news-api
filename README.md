@@ -70,11 +70,6 @@ docker-compose down
 composer install
 ```
 
-```bash 
-# to serve project
-php artisan serve
-```
-
 
 
 ### After Project serve on localhost:8000
@@ -127,6 +122,9 @@ php artisan serve
    ```
    ```bash
    php artisan config:cache
+   ```
+   ```bash
+   php artisan serve
    ```
 5. **Start Queue Worker**
    ```bash
