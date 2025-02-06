@@ -30,7 +30,9 @@ class AggregationService
 
         if (!empty($articles)) {
             $articlesArray = array_map(fn($article) => $article->toArray(), $articles);
-            $this->articleRepository->create($articlesArray);
+            foreach ($articlesArray as $article) {
+                $this->articleRepository->create($article);
+            }
         }
     }
 }
