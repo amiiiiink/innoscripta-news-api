@@ -137,6 +137,9 @@ API documentation is available at:
 ```
 http://localhost:8000/request-docs
 ```
+![Screenshot](public/screen.png)
+
+
 and postman collection is in /storage
 ## Development Guide
 
