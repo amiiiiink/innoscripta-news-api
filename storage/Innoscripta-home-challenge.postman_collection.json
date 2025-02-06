@@ -1,0 +1,26 @@
+{
+	"info": {
+		"_postman_id": "af63158b-20ae-4c7b-b3c7-bfb84f06c25c",
+		"name": "Innoscripta-home-challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32660782"
+	},
+	"item": [
+		{
+			"name": "auth/login",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "article list",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

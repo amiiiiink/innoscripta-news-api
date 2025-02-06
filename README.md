@@ -30,16 +30,16 @@ and provides an API for frontend consumption.
 
 ## Installation
 
+#### Clone the repository
 ```bash
-# Clone the repository
 git clone https://github.com/amiiiiink/innoscripta-news-api.git
 cd innoscripta-news-api
 ```
 
 ### Using Docker
 
+#### Build and start containers
 ```bash
-# Build and start containers
 docker-compose up --build -d
 ```
 
@@ -63,38 +63,44 @@ make down
 docker-compose down
 ```
 
+### WithOut Docker
+
+```bash
+composer install
+```
+
+```bash
+php artisan serve
+```
+
+
+
 ### After Project serve on localhost:8000
 
  Run below commands on Docker bash.
 
 1. **Migrate and Seed the Database**
+
    ```bash
    php artisan migrate
    ```
+   
 
-2. **Start Queue Worker**
-   ```bash
-   php artisan queue:work
-   ```
-3. **Seed Additional Data**
+2. **Seed Additional Data**
    ```bash
    php artisan tinker
+   ```
+   Then inside tinker terminal :
+   ```bash
    App\Models\User::factory()->create();
    ```
    
-The test user in api/auth/token is : 
+### now the test user in api/auth/token is : 
 
- username: amin@gmail.com
- password: password
+ *email* : amin@gmail.com \
+ *password* : password
 
-4**Seed Additional Data (Optional in case you want to have 100 articles to test without fetching from APIs)**
-   ```bash
-   php artisan tinker
-    App\Models\Article::factory()->count(100)->create();
-   ```
-  
-
- **Update Environment Variables**
+3. **Update Environment Variables**
    Edit your `.env` file and add API keys:
    ```ini
    GUARDIAN_API_KEY=
@@ -104,15 +110,26 @@ The test user in api/auth/token is :
    
    and
 
-  ```ini
+4. **Update Environment Variables**
+     ```ini
      DB_CONNECTION=mysql
-     DB_HOST=mysql
+     DB_HOST=mysql // using docker
+     DB_HOST=127.0.0.1 // with out docker
      DB_PORT=3306
      DB_DATABASE=innoscripta
      DB_USERNAME=root
      DB_PASSWORD=password
    ```
-
+   ```bash
+   php artisan key:generate
+   ```
+   ```bash
+   php artisan config:cache
+   ```
+5. **Start Queue Worker**
+   ```bash
+   php artisan queue:work
+   ```
 ## Usage
 
 API documentation is available at:
@@ -120,7 +137,7 @@ API documentation is available at:
 ```
 http://localhost:8000/request-docs
 ```
-
+and postman collection is in /storage
 ## Development Guide
 
 To add a new service:
