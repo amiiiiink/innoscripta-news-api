@@ -6,7 +6,6 @@ class UserSearchDTO
 {
     public function __construct(
         public ?int    $user_id,
-        public ?string $search_query,
         public ?string $category,
         public ?string $source
     )
@@ -17,7 +16,6 @@ class UserSearchDTO
     {
         return new self(
             auth()->id(),
-            $request->input('search_query'),
             $request->input('category'),
             $request->input('source')
         );
@@ -27,7 +25,6 @@ class UserSearchDTO
     {
         return [
             'user_id' => $this->user_id,
-            'search_query' => $this->search_query,
             'category' => $this->category,
             'source' => $this->source,
         ];
